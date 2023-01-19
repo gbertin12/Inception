@@ -1,0 +1,34 @@
+services:
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    ports:
+      - 443:443
+    restart: always
+    networks:
+      - network
+
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    restart: always
+    networks:
+      - network
+    env_file:
+      - .env
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    restart: always
+    build: ./requirements/wordpress
+    networks:
+      - network
+    env_file:
+      - .env
+
+  networks:
+    network:
+      driver: bridge
+  
