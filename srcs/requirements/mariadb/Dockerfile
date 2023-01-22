@@ -14,7 +14,7 @@ EXPOSE 3306
 
 ENTRYPOINT [ "bash", "create_db.sh" ]
 
-CMD [ "mysqld",  "--bind-address=0.0.0.0" ]
+CMD [ "mysqld", "--bind-address=0.0.0.0" ]
 
 
 

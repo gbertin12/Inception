@@ -3,12 +3,12 @@
 if [ ! -d /var/lib/mysql/wordpress ]; then
 	/usr/share/mysql/mysql.server start && 
 	mysql -e "
-	CREATE DATABASE wordpress;
-	CREATE USER 'admin'@'%' IDENTIFIED BY 'root123';
-   	GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+	CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+	CREATE USER '$MYSQL_ROOT'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+   	GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_ROOT}'@'%';
    	FLUSH PRIVILEGES;
-	CREATE USER 'gbertin'@'%' IDENTIFIED BY 'PWDPWD12';
-		GRANT ALL PRIVILEGES ON wordpress.* TO 'gbertin'@'%';
+	CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_USER_PASSWORD';
+		GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
    	FLUSH PRIVILEGES;
 	"
 	/usr/share/mysql/mysql.server stop && mysqld
