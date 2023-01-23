@@ -8,7 +8,7 @@ services:
       - 443:443
     restart: always
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/
     networks:
       - network
 
@@ -32,7 +32,7 @@ services:
     networks:
       - network
     volumes:
-      - wordpress:/var/www/html
+      - wordpress:/var/www/
     env_file:
       - .env
 
@@ -42,16 +42,4 @@ networks:
 
 volumes:
   mariadb:
-    name: mariadb
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /Users/tsawe07/data/mariadb
   wordpress:
-    name: wordpress
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /Users/tsawe07/data/wordpress

@@ -1,12 +1,14 @@
 
-DIRS = /Users/tsawe07/data/{mariadb,wordpress}
+VOLUME_DB = /home/gbertin/data/mariadb
+VOLUME_WP = /home/gbertin/data/wordpress
 IMAGES = 
 CONTAINER = 
 VOLUMES = 
 
 all: 
-	mkdir -p ${DIRS}
-	@docker-compose -f srcs/docker-compose.yml up --build -d
+	mkdir -p ${VOLUME_DB}
+	mkdir -p ${VOLUME_WP}
+	docker-compose -f srcs/docker-compose.yml up --build -d
 
 down: 
 	@docker-compose -f srcs/docker-compose.yml down
