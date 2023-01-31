@@ -1,14 +1,14 @@
 
-# VOLUME_DB = /home/gbertin/data/mariadb
-# VOLUME_WP = /home/gbertin/data/wordpress
-VOLUME_DB = /Users/tsawe07/data/mariadb
-VOLUME_WP = /Users/tsawe07/data/wordpress
+VOLUME_DB = /home/gbertin/data/mariadb
+VOLUME_WP = /home/gbertin/data/wordpress
+#VOLUME_DB = /Users/tsawe07/data/mariadb
+#VOLUME_WP = /Users/tsawe07/data/wordpress
 
 
 all: 
 	mkdir -p ${VOLUME_DB}
 	mkdir -p ${VOLUME_WP}
-	docker-compose -f srcs/docker-compose.yml up
+	docker-compose -f srcs/docker-compose.yml up -d
 
 down: 
 	docker-compose -f srcs/docker-compose.yml down

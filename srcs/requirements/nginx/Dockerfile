@@ -6,7 +6,7 @@ FROM debian:buster
 RUN apt-get update && apt-get install -y nginx openssl
 
 RUN mkdir /etc/nginx/ssl
-RUN openssl req -newkey rsa:4096 -x509 -days 365 -nodes \
+RUN openssl req -x509 -nodes \
         -out /etc/ssl/certs/gbertin.pem \
         -keyout /etc/ssl/private/gbertin.key \
         -subj "/C=IT/ST=Paris/L=Paris/O=42france/OU=gbertin/CN=gbertin/"

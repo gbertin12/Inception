@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update; \
-	apt-get install -y php php-fpm php-mysql curl vim bash
+	apt-get install -y php php-fpm php-mysql curl vim bash mariadb-client
 
 RUN mkdir -p /var/run/php/
 RUN mkdir -p /var/www/html
