@@ -11,7 +11,6 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-#COPY ./conf/wp-config.php /var/www/html
 COPY ./tools/wp.sh .
 
 EXPOSE 9000

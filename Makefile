@@ -5,9 +5,11 @@ all:
 down: 
 	docker-compose -f srcs/docker-compose.yml down
 
-clean: down
-	docker rmi  $(shell docker images -qa)
-	docker rm  $(shell docker ps -qa)
+re: fclean
+	docker-compose -f srcs/docker-compose.yml up --build --remove-orphans
+
+fclean:
+	docker-compose -f srcs/docker-compose.yml down --rmi all --volumes
 
 vclean: down
 	docker rmi $(shell docker images -qa)
