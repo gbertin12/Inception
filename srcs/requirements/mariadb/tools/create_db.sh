@@ -10,6 +10,8 @@ if [ ! -d /var/lib/mysql/wordpress ]; then
 	CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_USER_PASSWORD';
 		GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
    	FLUSH PRIVILEGES;
+	ALTER USER root@localhost IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+	FLUSH PRIVILEGES;
 	"
 	/usr/share/mysql/mysql.server stop && mysqld
 fi
